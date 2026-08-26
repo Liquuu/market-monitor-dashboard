@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "mode": "sample",
+  "generated_at": null,
+  "status": {
+    "state": "setup",
+    "message": "サンプル表示です。市場データ取得処理はタスク3で追加します。"
+  },
+  "metrics": {
+    "skew": {
+      "label": "Cboe SKEW Index",
+      "value": null,
+      "delta": null,
+      "unit": "index",
+      "decimals": 2,
+      "observed_at": null,
+      "source_url": "https://finance.yahoo.com/quote/%5ESKEW/"
+    },
+    "vix": {
+      "label": "Cboe Volatility Index",
+      "value": null,
+      "delta": null,
+      "unit": "index",
+      "decimals": 2,
+      "observed_at": null,
+      "source_url": "https://finance.yahoo.com/quote/%5EVIX/"
+    },
+    "nasdaq100_drawdown": {
+      "label": "NASDAQ 100 Drawdown",
+      "value": null,
+      "delta": null,
+      "unit": "%",
+      "decimals": 2,
+      "observed_at": null,
+      "source_url": "https://finance.yahoo.com/quote/%5ENDX/"
+    },
+    "brent": {
+      "label": "Brent Crude Oil Futures",
+      "value": null,
+      "delta": null,
+      "unit": "USD/bbl",
+      "decimals": 2,
+      "observed_at": null,
+      "source_url": "https://finance.yahoo.com/quote/BZ%3DF/"
+    },
+    "us10y": {
+      "label": "US 10-Year Treasury Yield",
+      "value": null,
+      "delta": null,
+      "unit": "%",
+      "decimals": 3,
+      "observed_at": null,
+      "source_url": "https://finance.yahoo.com/quote/%5ETNX/"
+    }
+  },
+  "weekly": {
+    "as_of": null,
+    "cci": null,
+    "rsi": null
+  }
+}
