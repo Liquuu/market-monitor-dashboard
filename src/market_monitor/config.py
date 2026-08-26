@@ -41,6 +41,13 @@ class DrawdownConfig:
 
 
 @dataclass(frozen=True, slots=True)
+class StorageConfig:
+    intraday_history_years: int
+    weekly_history_years: int
+    skip_duplicate_source_timestamp: bool
+
+
+@dataclass(frozen=True, slots=True)
 class DashboardConfig:
     timezone: str
     yahoo_timeout_seconds: int
@@ -48,6 +55,7 @@ class DashboardConfig:
     instruments: dict[str, InstrumentConfig]
     weekly: WeeklyIndicatorConfig
     drawdown: DrawdownConfig
+    storage: StorageConfig
 
 
 def _mapping(value: Any, path: str) -> dict[str, Any]:
@@ -66,6 +74,12 @@ def _required_text(value: Any, path: str) -> str:
     if not isinstance(value, str) or not value.strip():
         raise ConfigError(f"{path} must be a non-empty string")
     return value.strip()
+
+
+def _boolean(value: Any, path: str) -> bool:
+    if not isinstance(value, bool):
+        raise ConfigError(f"{path} must be true or false")
+    return value
 
 
 def load_config(path: str | Path) -> DashboardConfig:
@@ -106,6 +120,7 @@ def load_config(path: str | Path) -> DashboardConfig:
     rsi = _mapping(weekly_raw.get("rsi"), "indicators.weekly.rsi")
     cci = _mapping(weekly_raw.get("cci"), "indicators.weekly.cci")
     drawdown_raw = _mapping(indicators.get("drawdown"), "indicators.drawdown")
+    storage_raw = _mapping(root.get("storage"), "storage")
 
     weekly_instrument = _required_text(
         weekly_raw.get("instrument"), "indicators.weekly.instrument"
@@ -149,5 +164,19 @@ def load_config(path: str | Path) -> DashboardConfig:
                 "indicators.drawdown.price_field",
             ).capitalize(),
             lookback_days=lookback_days,
+        ),
+        storage=StorageConfig(
+            intraday_history_years=_positive_int(
+                storage_raw.get("intraday_history_years", 5),
+                "storage.intraday_history_years",
+            ),
+            weekly_history_years=_positive_int(
+                storage_raw.get("weekly_history_years", 10),
+                "storage.weekly_history_years",
+            ),
+            skip_duplicate_source_timestamp=_boolean(
+                storage_raw.get("skip_duplicate_source_timestamp", True),
+                "storage.skip_duplicate_source_timestamp",
+            ),
         ),
     )

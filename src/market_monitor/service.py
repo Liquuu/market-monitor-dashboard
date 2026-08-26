@@ -45,35 +45,19 @@ class SnapshotService:
             "source_url": instrument.source_url,
         }
 
-    def build(self) -> dict[str, object]:
+    def build_intraday(self) -> dict[str, object]:
+        """Fetch the twice-daily values and calculate NASDAQ 100 drawdown."""
+
         quotes = {
             key: self.provider.fetch_latest(instrument.symbol)
             for key, instrument in self.config.instruments.items()
         }
-
-        history_by_key: dict[str, pd.DataFrame] = {}
-        for key in {self.config.weekly.instrument, self.config.drawdown.instrument}:
-            history_by_key[key] = self.provider.fetch_daily_history(
-                self.config.instruments[key].symbol, period="max"
-            )
-
-        weekly_config = self.config.weekly
-        weekly = compute_weekly_indicators(
-            history_by_key[weekly_config.instrument],
-            rsi_period=weekly_config.rsi_period,
-            cci_period=weekly_config.cci_period,
-            cci_constant=weekly_config.cci_constant,
-            exclude_incomplete_week=weekly_config.exclude_incomplete_week,
-        ).dropna(subset=["RSI", "CCI"])
-        if weekly.empty:
-            raise ValueError("Not enough weekly history to calculate RSI and CCI")
-        weekly_latest = weekly.iloc[-1]
-
         drawdown_config = self.config.drawdown
         drawdown_instrument = self.config.instruments[drawdown_config.instrument]
         drawdown_quote = quotes[drawdown_config.instrument]
+        daily = self.provider.fetch_daily_history(drawdown_instrument.symbol, period="max")
         drawdown = calculate_drawdown(
-            history_by_key[drawdown_config.instrument][drawdown_config.price_field],
+            daily[drawdown_config.price_field],
             latest_value=drawdown_quote.value,
             lookback_days=drawdown_config.lookback_days,
         )
@@ -93,17 +77,58 @@ class SnapshotService:
         }
 
         return {
-            "schema_version": 1,
-            "mode": "live",
             "generated_at": _iso_utc(self.now_factory()),
-            "status": {
-                "state": "ready",
-                "message": "市場データを正常に取得しました。",
-            },
             "metrics": metrics,
+        }
+
+    def build_weekly(self) -> dict[str, object]:
+        """Fetch daily history and calculate the latest confirmed weekly values."""
+
+        weekly_config = self.config.weekly
+        instrument = self.config.instruments[weekly_config.instrument]
+        daily = self.provider.fetch_daily_history(instrument.symbol, period="max")
+        weekly = compute_weekly_indicators(
+            daily,
+            rsi_period=weekly_config.rsi_period,
+            cci_period=weekly_config.cci_period,
+            cci_constant=weekly_config.cci_constant,
+            exclude_incomplete_week=weekly_config.exclude_incomplete_week,
+        ).dropna(subset=["RSI", "CCI"])
+        if weekly.empty:
+            raise ValueError("Not enough weekly history to calculate RSI and CCI")
+        weekly_latest = weekly.iloc[-1]
+        history = [
+            {
+                "as_of": _iso_utc(index),
+                "close": round(float(row["Close"]), 2),
+                "cci": round(float(row["CCI"]), 2),
+                "rsi": round(float(row["RSI"]), 2),
+            }
+            for index, row in weekly.iterrows()
+        ]
+        return {
+            "generated_at": _iso_utc(self.now_factory()),
             "weekly": {
                 "as_of": _iso_utc(weekly.index[-1]),
                 "cci": round(float(weekly_latest["CCI"]), 2),
                 "rsi": round(float(weekly_latest["RSI"]), 2),
             },
+            "weekly_history": history,
+        }
+
+    def build(self) -> dict[str, object]:
+        """Build a complete snapshot (kept for local use and compatibility)."""
+
+        intraday = self.build_intraday()
+        weekly = self.build_weekly()
+        return {
+            "schema_version": 1,
+            "mode": "live",
+            "generated_at": intraday["generated_at"],
+            "status": {
+                "state": "ready",
+                "message": "市場データを正常に取得しました。",
+            },
+            "metrics": intraday["metrics"],
+            "weekly": weekly["weekly"],
         }
