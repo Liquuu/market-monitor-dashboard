@@ -1,0 +1,129 @@
+version: 1
+
+project:
+  name: Market Monitor Dashboard
+  timezone: Asia/Tokyo
+  dashboard_url: https://liquuu.github.io/market-monitor-dashboard/
+
+schedules:
+  intraday_local_times:
+    - "09:00"
+    - "21:00"
+  weekly_local_day: monday
+  weekly_local_time: "08:00"
+
+providers:
+  yahoo:
+    adapter: yfinance
+    enabled: true
+    request_timeout_seconds: 30
+    retries: 3
+
+instruments:
+  nasdaq100:
+    label: NASDAQ 100
+    provider: yahoo
+    symbol: ^NDX
+    unit: index
+    decimals: 2
+    source_url: https://finance.yahoo.com/quote/%5ENDX/
+  skew:
+    label: Cboe SKEW Index
+    provider: yahoo
+    symbol: ^SKEW
+    unit: index
+    decimals: 2
+    source_url: https://finance.yahoo.com/quote/%5ESKEW/
+  vix:
+    label: Cboe Volatility Index
+    provider: yahoo
+    symbol: ^VIX
+    unit: index
+    decimals: 2
+    source_url: https://finance.yahoo.com/quote/%5EVIX/
+  brent:
+    label: Brent Crude Oil Futures
+    provider: yahoo
+    symbol: BZ=F
+    unit: USD/bbl
+    decimals: 2
+    source_url: https://finance.yahoo.com/quote/BZ%3DF/
+  us10y:
+    label: US 10-Year Treasury Yield
+    provider: yahoo
+    symbol: ^TNX
+    unit: "%"
+    decimals: 3
+    source_url: https://finance.yahoo.com/quote/%5ETNX/
+
+indicators:
+  weekly:
+    instrument: nasdaq100
+    week_ending: friday
+    exclude_incomplete_week: true
+    rsi:
+      enabled: true
+      period: 14
+      method: wilder
+      guides: [30, 70]
+    cci:
+      enabled: true
+      period: 20
+      constant: 0.015
+      guides: [-100, 100]
+  drawdown:
+    instrument: nasdaq100
+    price_field: close
+    lookback_days: null  # null = 取得可能な全履歴
+
+storage:
+  intraday_history_years: 5
+  weekly_history_years: 10
+  skip_duplicate_source_timestamp: true
+
+freshness:
+  max_age_hours:
+    nasdaq100: 72
+    skew: 72
+    vix: 72
+    brent: 72
+    us10y: 72
+  skip_alert_when_stale: true
+
+notifications:
+  discord:
+    enabled: true
+    webhook_secret_name: DISCORD_WEBHOOK_URL
+    mention_secret_name: DISCORD_MENTION
+    combine_matches: true
+    notify_recovery: false
+    allowed_mentions:
+      users: true
+      roles: true
+      everyone: false
+
+alerts:
+  - id: skew_high_example
+    enabled: false
+    instrument: skew
+    operator: gte
+    threshold: 150
+    notify_on: enter
+    cooldown_hours: 24
+    message: "SKEWが警戒水準以上です。"
+
+  - id: vix_high_example
+    enabled: false
+    instrument: vix
+    operator: gte
+    threshold: 30
+    notify_on: enter
+    cooldown_hours: 24
+    message: "VIXが警戒水準以上です。"
+
+display:
+  locale: ja-JP
+  default_history_days: 365
+  show_source_links: true
+  show_freshness: true
+  theme: system
