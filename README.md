@@ -9,6 +9,7 @@ GitHub Actionsで市場データを定期取得し、GitHub Pagesで可視化し
 
 - タスク1（要件・指標定義・設定設計）完了
 - タスク2（GitHub Pages用の静的サイト骨格・実運用設定）完了
+- タスク3（Yahoo Finance市場データ取得・週足CCI/RSI・ドローダウン計算）完了
 - 仕様書: [`docs/specification.md`](docs/specification.md)
 - 設定例: [`config/config.example.yaml`](config/config.example.yaml)
 - 実運用設定: [`config/config.yaml`](config/config.yaml)
@@ -20,7 +21,22 @@ GitHub Actionsで市場データを定期取得し、GitHub Pagesで可視化し
 - `assets/js/app.js`: `data/latest.json`の読み込みと表示
 - `data/latest.json`: 後続タスクで市場データ取得処理が更新するファイル
 
-現時点ではサンプルデータを表示します。市場データ取得と指標計算はタスク3で実装します。
+`data/latest.json` は初期状態ではサンプルです。次のコマンドでYahoo Financeから取得し、実データに更新できます。
+
+```powershell
+python -m pip install -r requirements.txt
+$env:PYTHONPATH = "src"
+python -m market_monitor.cli --config config/config.yaml --output data/latest.json
+```
+
+取得処理は、設定された各銘柄の直近値、NASDAQ 100の日足履歴から作った確定週足のCCI・RSI、および終値最高値からのドローダウンを出力します。前回値との差分と履歴保存はタスク4で追加します。
+
+テストは次のコマンドで実行できます。
+
+```powershell
+$env:PYTHONPATH = "src"
+python -m unittest discover -s tests -v
+```
 
 ## 実装ロードマップ
 
