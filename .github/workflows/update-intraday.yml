@@ -1,0 +1,54 @@
+name: Update intraday market data
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 9,21 * * *"
+      timezone: Asia/Tokyo
+
+permissions:
+  contents: write
+
+concurrency:
+  group: market-data-update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements.txt
+
+      - name: Install dependencies and project
+        run: |
+          python -m pip install --requirement requirements.txt
+          python -m pip install --no-deps .
+
+      - name: Run unit tests
+        run: python -m unittest discover -s tests -v
+
+      - name: Fetch intraday data
+        run: market-monitor --scope intraday
+
+      - name: Commit updated data
+        shell: bash
+        run: |
+          git add data/
+          if git diff --cached --quiet; then
+            echo "No new market timestamps; nothing to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "data: update intraday market snapshot"
+          git pull --rebase origin main
+          git push origin HEAD:main
