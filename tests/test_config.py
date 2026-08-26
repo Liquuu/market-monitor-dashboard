@@ -13,6 +13,8 @@ class ConfigTests(unittest.TestCase):
 
         self.assertEqual(config.instruments["nasdaq100"].symbol, "^NDX")
         self.assertEqual(config.yahoo_retries, 3)
+        self.assertEqual(config.storage.intraday_history_years, 5)
+        self.assertTrue(config.storage.skip_duplicate_source_timestamp)
         self.assertEqual(config.weekly.rsi_period, 14)
         self.assertEqual(config.drawdown.price_field, "Close")
 

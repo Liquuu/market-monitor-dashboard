@@ -9,6 +9,7 @@ from market_monitor.config import (
     DashboardConfig,
     DrawdownConfig,
     InstrumentConfig,
+    StorageConfig,
     WeeklyIndicatorConfig,
 )
 from market_monitor.models import Quote
@@ -66,6 +67,7 @@ class SnapshotServiceTests(unittest.TestCase):
             instruments=instruments,
             weekly=WeeklyIndicatorConfig("nasdaq100", True, 14, 20, 0.015),
             drawdown=DrawdownConfig("nasdaq100", "Close", None),
+            storage=StorageConfig(5, 10, True),
         )
 
     def test_snapshot_matches_dashboard_contract(self) -> None:
