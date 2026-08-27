@@ -1,61 +1,61 @@
 {
   "schema_version": 1,
-  "mode": "sample",
-  "generated_at": null,
+  "mode": "live",
+  "generated_at": "2026-08-27T02:15:34.272559Z",
   "status": {
-    "state": "setup",
-    "message": "サンプル表示です。市場データ取得処理はタスク3で追加します。"
+    "state": "ready",
+    "message": "市場データを正常に取得しました。"
   },
   "metrics": {
     "skew": {
       "label": "Cboe SKEW Index",
-      "value": null,
+      "value": 142.96,
       "delta": null,
       "unit": "index",
       "decimals": 2,
-      "observed_at": null,
+      "observed_at": "2026-08-26T04:00:00Z",
       "source_url": "https://finance.yahoo.com/quote/%5ESKEW/"
     },
     "vix": {
       "label": "Cboe Volatility Index",
-      "value": null,
+      "value": 15.21,
       "delta": null,
       "unit": "index",
       "decimals": 2,
-      "observed_at": null,
+      "observed_at": "2026-08-26T20:00:00Z",
       "source_url": "https://finance.yahoo.com/quote/%5EVIX/"
-    },
-    "nasdaq100_drawdown": {
-      "label": "NASDAQ 100 Drawdown",
-      "value": null,
-      "delta": null,
-      "unit": "%",
-      "decimals": 2,
-      "observed_at": null,
-      "source_url": "https://finance.yahoo.com/quote/%5ENDX/"
     },
     "brent": {
       "label": "Brent Crude Oil Futures",
-      "value": null,
+      "value": 86.36,
       "delta": null,
       "unit": "USD/bbl",
       "decimals": 2,
-      "observed_at": null,
+      "observed_at": "2026-08-27T02:00:00Z",
       "source_url": "https://finance.yahoo.com/quote/BZ%3DF/"
     },
     "us10y": {
       "label": "US 10-Year Treasury Yield",
-      "value": null,
+      "value": 4.664,
       "delta": null,
       "unit": "%",
       "decimals": 3,
-      "observed_at": null,
+      "observed_at": "2026-08-26T18:20:00Z",
       "source_url": "https://finance.yahoo.com/quote/%5ETNX/"
+    },
+    "nasdaq100_drawdown": {
+      "label": "NASDAQ 100 Drawdown",
+      "value": -4.67,
+      "delta": null,
+      "unit": "%",
+      "decimals": 2,
+      "observed_at": "2026-08-26T19:30:00Z",
+      "source_url": "https://finance.yahoo.com/quote/%5ENDX/"
     }
   },
   "weekly": {
-    "as_of": null,
-    "cci": null,
-    "rsi": null
+    "as_of": "2026-08-21T00:00:00Z",
+    "cci": 52.86,
+    "rsi": 57.38
   }
 }
