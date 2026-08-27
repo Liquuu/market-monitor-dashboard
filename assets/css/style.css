@@ -11,6 +11,7 @@
   --positive: #65d69b;
   --negative: #ff7f87;
   --warning: #f4c76b;
+  --grid: rgba(145, 168, 181, 0.16);
   --shadow: 0 18px 50px rgba(0, 0, 0, 0.22);
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
@@ -170,7 +171,7 @@ section + section {
 
 .metric-card,
 .indicator-card,
-.chart-placeholder,
+.chart-panel,
 .source-list {
   border: 1px solid var(--border);
   border-radius: 16px;
@@ -241,25 +242,193 @@ section + section {
   font-weight: 780;
 }
 
-.chart-placeholder {
-  display: grid;
-  min-height: 260px;
-  margin-top: 14px;
-  place-content: center;
-  text-align: center;
+.chart-toolbar,
+.chart-title-row,
+.history-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.chart-toolbar {
+  margin: 24px 0 12px;
+}
+
+.chart-toolbar p,
+.chart-guide-label,
+.history-controls label {
+  margin: 0;
   color: var(--muted);
+  font-size: 0.82rem;
 }
 
-.chart-placeholder span {
+.range-buttons {
+  display: inline-flex;
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: rgba(7, 16, 24, 0.62);
+}
+
+.range-buttons button {
+  min-width: 50px;
+  padding: 6px 10px;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 750;
+}
+
+.range-buttons button:hover,
+.range-buttons button:focus-visible {
+  color: var(--text);
+  outline: 1px solid var(--accent);
+}
+
+.range-buttons button[aria-pressed="true"] {
+  background: var(--accent-soft);
   color: var(--accent);
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
 }
 
-.chart-placeholder p {
-  margin: 6px 0 0;
+.chart-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.chart-panel {
+  min-width: 0;
+  padding: 20px;
+}
+
+.chart-title-row {
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.chart-title-row h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.chart-kicker {
+  margin: 0 0 2px;
+  color: var(--accent);
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.chart-guide-label {
+  text-align: right;
+}
+
+.chart {
+  min-height: 250px;
+  overflow: hidden;
+}
+
+.chart svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 250px;
+}
+
+.chart-large,
+.chart-large svg {
+  min-height: 310px;
+}
+
+.chart-axis-label {
+  fill: var(--muted);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+
+.chart-grid-line {
+  stroke: var(--grid);
+  stroke-width: 1;
+}
+
+.chart-guide-line {
+  stroke: var(--warning);
+  stroke-dasharray: 5 5;
+  stroke-opacity: 0.62;
+  stroke-width: 1;
+}
+
+.chart-zero-line {
+  stroke: rgba(237, 245, 248, 0.28);
+  stroke-width: 1;
+}
+
+.chart-line {
+  fill: none;
+  stroke: var(--accent);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.2;
+  vector-effect: non-scaling-stroke;
+}
+
+.chart-latest-dot {
+  fill: var(--surface);
+  stroke: var(--accent);
+  stroke-width: 3;
+}
+
+.chart-empty {
+  min-height: 250px;
+  display: grid;
+  place-content: center;
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+  color: var(--muted);
+  text-align: center;
+}
+
+.chart-empty strong {
+  color: var(--text);
+}
+
+.chart-empty p {
+  margin: 4px 0 0;
+  font-size: 0.82rem;
+}
+
+.chart-panel-wide {
+  padding: 22px;
+}
+
+.history-controls {
+  justify-content: flex-start;
+  margin-bottom: 24px;
+}
+
+.history-controls select {
+  min-height: 38px;
+  padding: 6px 36px 6px 12px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+}
+
+.history-controls .range-buttons {
+  margin-left: auto;
+}
+
+.history-chart-title {
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
 }
 
 .source-list {
@@ -298,12 +467,18 @@ footer {
   .metric-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .chart-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 600px) {
   .header-inner,
   .footer-inner,
-  .section-heading {
+  .section-heading,
+  .chart-toolbar,
+  .history-controls {
     align-items: flex-start;
     flex-direction: column;
   }
@@ -325,6 +500,15 @@ footer {
     align-items: flex-start;
     flex-direction: column;
     gap: 2px;
+  }
+
+  .history-controls .range-buttons {
+    margin-left: 0;
+  }
+
+  .chart-panel,
+  .chart-panel-wide {
+    padding: 16px;
   }
 }
 
