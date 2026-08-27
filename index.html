@@ -72,10 +72,74 @@
           </article>
         </div>
 
-        <div class="chart-placeholder" aria-label="チャート実装予定領域">
-          <span>Chart area</span>
-          <p>履歴チャートはタスク5で追加します。</p>
+        <div class="chart-toolbar" aria-label="週足チャート期間">
+          <p id="weekly-chart-summary">履歴読込中</p>
+          <div class="range-buttons" data-chart-controls="weekly">
+            <button type="button" data-years="1" aria-pressed="true">1年</button>
+            <button type="button" data-years="3" aria-pressed="false">3年</button>
+            <button type="button" data-years="10" aria-pressed="false">10年</button>
+          </div>
         </div>
+
+        <div class="chart-grid">
+          <article class="chart-panel">
+            <div class="chart-title-row">
+              <div>
+                <p class="chart-kicker">COMMODITY CHANNEL INDEX</p>
+                <h3>CCI（20週）</h3>
+              </div>
+              <p class="chart-guide-label">ガイド ±100</p>
+            </div>
+            <div id="cci-chart" class="chart" role="img" aria-label="NASDAQ 100の週足CCI推移"></div>
+          </article>
+
+          <article class="chart-panel">
+            <div class="chart-title-row">
+              <div>
+                <p class="chart-kicker">RELATIVE STRENGTH INDEX</p>
+                <h3>RSI（14週）</h3>
+              </div>
+              <p class="chart-guide-label">ガイド 30 / 70</p>
+            </div>
+            <div id="rsi-chart" class="chart" role="img" aria-label="NASDAQ 100の週足RSI推移"></div>
+          </article>
+        </div>
+      </section>
+
+      <section aria-labelledby="history-heading">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">MARKET HISTORY</p>
+            <h2 id="history-heading">市場指標の推移</h2>
+          </div>
+          <p>定期取得した値を表示</p>
+        </div>
+
+        <article class="chart-panel chart-panel-wide">
+          <div class="history-controls">
+            <label for="history-metric">表示する指標</label>
+            <select id="history-metric">
+              <option value="skew">SKEW</option>
+              <option value="vix">VIX</option>
+              <option value="nasdaq100_drawdown">NASDAQ 100 Drawdown</option>
+              <option value="brent">Brent Crude Oil</option>
+              <option value="us10y">US 10-Year Treasury Yield</option>
+            </select>
+            <div class="range-buttons" data-chart-controls="intraday" aria-label="市場指標チャート期間">
+              <button type="button" data-days="30" aria-pressed="false">30日</button>
+              <button type="button" data-days="90" aria-pressed="true">90日</button>
+              <button type="button" data-days="365" aria-pressed="false">1年</button>
+            </div>
+          </div>
+          <div class="chart-title-row history-chart-title">
+            <div>
+              <p class="chart-kicker">SELECTED SERIES</p>
+              <h3 id="history-chart-title">SKEW</h3>
+            </div>
+            <p id="history-chart-summary" class="chart-guide-label">履歴読込中</p>
+          </div>
+          <div id="history-chart" class="chart chart-large" role="img" aria-label="市場指標の履歴推移"></div>
+        </article>
       </section>
 
       <section aria-labelledby="sources-heading">

@@ -11,9 +11,12 @@ GitHub Actionsで市場データを定期取得し、GitHub Pagesで可視化し
 - タスク2（GitHub Pages用の静的サイト骨格・実運用設定）完了
 - タスク3（Yahoo Finance市場データ取得・週足CCI/RSI・ドローダウン計算）完了
 - タスク4（履歴保存・前回差分・GitHub Actions定期実行）完了
+- タスク5（履歴グラフ・現在値・前回差分・ソース表示）完了
+- タスク7軽量版（最低限のテスト・運用手順）完了
 - 仕様書: [`docs/specification.md`](docs/specification.md)
 - 設定例: [`config/config.example.yaml`](config/config.example.yaml)
 - 実運用設定: [`config/config.yaml`](config/config.yaml)
+- 最小運用手順: [`docs/operations.md`](docs/operations.md)
 
 ## 画面構成
 
@@ -42,6 +45,15 @@ python -m market_monitor.cli --scope all
 両ワークフローはActions画面から手動実行もできます。取得元タイムスタンプが前回と同じ場合は履歴追記と自動コミットを省略します。履歴の保持年数や重複判定は `config/config.yaml` の `storage` で変更できます。
 
 実行時刻を変更する場合は、各ワークフローの `cron` を編集します。`timezone: Asia/Tokyo` を指定しているため、cronは日本時間のまま記述できます。
+
+## ダッシュボードのグラフ
+
+- NASDAQ 100週足CCI: 1年・3年・10年表示、±100ガイド
+- NASDAQ 100週足RSI: 1年・3年・10年表示、30・70ガイド
+- 市場指標履歴: SKEW、VIX、NASDAQ 100ドローダウン、Brent、米10年金利を選択表示
+- 市場指標の期間: 30日・90日・1年
+
+グラフは外部ライブラリを使わず、`data/history/*.json` からブラウザ上でSVGを生成します。初回の定期取得前は空状態を表示します。
 
 テストは次のコマンドで実行できます。
 
