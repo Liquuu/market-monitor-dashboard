@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "mode": "live",
-  "generated_at": "2026-08-29T04:35:42.211560Z",
+  "generated_at": "2026-08-30T02:06:09.793511Z",
   "status": {
     "state": "ready",
     "message": "市場データを正常に取得しました。"
@@ -9,11 +9,11 @@
   "metrics": {
     "skew": {
       "label": "Cboe SKEW Index",
-      "value": 144.05,
-      "delta": -5.72,
+      "value": 149.77,
+      "delta": 5.72,
       "unit": "index",
       "decimals": 2,
-      "observed_at": "2026-08-27T04:00:00Z",
+      "observed_at": "2026-08-28T04:00:00Z",
       "source_url": "https://finance.yahoo.com/quote/%5ESKEW/"
     },
     "vix": {
@@ -27,8 +27,8 @@
     },
     "brent": {
       "label": "Brent Crude Oil Futures",
-      "value": 88.29,
-      "delta": 0.0,
+      "value": 88.1,
+      "delta": -0.19,
       "unit": "USD/bbl",
       "decimals": 2,
       "observed_at": "2026-08-28T20:00:00Z",
