@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "mode": "live",
-  "generated_at": "2026-09-03T15:23:24.141582Z",
+  "generated_at": "2026-09-04T01:44:19.267035Z",
   "status": {
     "state": "ready",
     "message": "市場データを正常に取得しました。"
@@ -9,47 +9,47 @@
   "metrics": {
     "skew": {
       "label": "Cboe SKEW Index",
-      "value": 144.12,
-      "delta": 0.0,
+      "value": 150.63,
+      "delta": 6.51,
       "unit": "index",
       "decimals": 2,
-      "observed_at": "2026-09-02T04:00:00Z",
+      "observed_at": "2026-09-03T04:00:00Z",
       "source_url": "https://finance.yahoo.com/quote/%5ESKEW/"
     },
     "vix": {
       "label": "Cboe Volatility Index",
-      "value": 14.83,
-      "delta": -0.4,
+      "value": 14.31,
+      "delta": -0.52,
       "unit": "index",
       "decimals": 2,
-      "observed_at": "2026-09-03T15:00:00Z",
+      "observed_at": "2026-09-03T20:00:00Z",
       "source_url": "https://finance.yahoo.com/quote/%5EVIX/"
     },
     "brent": {
       "label": "Brent Crude Oil Futures",
-      "value": 96.84,
-      "delta": 1.43,
+      "value": 95.85,
+      "delta": -0.99,
       "unit": "USD/bbl",
       "decimals": 2,
-      "observed_at": "2026-09-03T15:00:00Z",
+      "observed_at": "2026-09-04T01:00:00Z",
       "source_url": "https://finance.yahoo.com/quote/BZ%3DF/"
     },
     "us10y": {
       "label": "US 10-Year Treasury Yield",
-      "value": 4.752,
-      "delta": -0.044,
+      "value": 4.762,
+      "delta": 0.01,
       "unit": "%",
       "decimals": 3,
-      "observed_at": "2026-09-03T14:20:00Z",
+      "observed_at": "2026-09-03T18:20:00Z",
       "source_url": "https://finance.yahoo.com/quote/%5ETNX/"
     },
     "nasdaq100_drawdown": {
       "label": "NASDAQ 100 Drawdown",
-      "value": -4.0,
-      "delta": 0.94,
+      "value": -3.84,
+      "delta": 0.16,
       "unit": "%",
       "decimals": 2,
-      "observed_at": "2026-09-03T14:30:00Z",
+      "observed_at": "2026-09-03T19:30:00Z",
       "source_url": "https://finance.yahoo.com/quote/%5ENDX/"
     }
   },
