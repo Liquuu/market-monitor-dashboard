@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "mode": "live",
-  "generated_at": "2026-09-07T01:37:14.070188Z",
+  "generated_at": "2026-09-07T16:46:25.786014Z",
   "status": {
     "state": "ready",
     "message": "市場データを正常に取得しました。"
@@ -18,20 +18,20 @@
     },
     "vix": {
       "label": "Cboe Volatility Index",
-      "value": 14.52,
-      "delta": 0.0,
+      "value": 15.3,
+      "delta": 0.78,
       "unit": "index",
       "decimals": 2,
-      "observed_at": "2026-09-04T20:00:00Z",
+      "observed_at": "2026-09-07T15:00:00Z",
       "source_url": "https://finance.yahoo.com/quote/%5EVIX/"
     },
     "brent": {
       "label": "Brent Crude Oil Futures",
       "value": 96.28,
-      "delta": 0.45,
+      "delta": 0.0,
       "unit": "USD/bbl",
       "decimals": 2,
-      "observed_at": "2026-09-07T01:00:00Z",
+      "observed_at": "2026-09-04T20:00:00Z",
       "source_url": "https://finance.yahoo.com/quote/BZ%3DF/"
     },
     "us10y": {
