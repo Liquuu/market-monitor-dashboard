@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "mode": "live",
-  "generated_at": "2026-09-21T00:58:30.894833Z",
+  "generated_at": "2026-09-21T02:05:02.913968Z",
   "status": {
     "state": "ready",
     "message": "市場データを正常に取得しました。"
@@ -10,7 +10,7 @@
     "skew": {
       "label": "Cboe SKEW Index",
       "value": 148.1,
-      "delta": 2.4,
+      "delta": 0.0,
       "unit": "index",
       "decimals": 2,
       "observed_at": "2026-09-18T04:00:00Z",
@@ -19,7 +19,7 @@
     "vix": {
       "label": "Cboe Volatility Index",
       "value": 14.81,
-      "delta": -0.51,
+      "delta": 0.0,
       "unit": "index",
       "decimals": 2,
       "observed_at": "2026-09-18T20:00:00Z",
@@ -27,17 +27,17 @@
     },
     "brent": {
       "label": "Brent Crude Oil Futures",
-      "value": 98.77,
-      "delta": -1.06,
+      "value": 97.23,
+      "delta": -1.54,
       "unit": "USD/bbl",
       "decimals": 2,
-      "observed_at": "2026-09-18T20:00:00Z",
+      "observed_at": "2026-09-21T01:00:00Z",
       "source_url": "https://finance.yahoo.com/quote/BZ%3DF/"
     },
     "us10y": {
       "label": "US 10-Year Treasury Yield",
       "value": 4.998,
-      "delta": -0.006,
+      "delta": 0.0,
       "unit": "%",
       "decimals": 3,
       "observed_at": "2026-09-18T18:20:00Z",
@@ -46,7 +46,7 @@
     "nasdaq100_drawdown": {
       "label": "NASDAQ 100 Drawdown",
       "value": -3.35,
-      "delta": 0.61,
+      "delta": 0.0,
       "unit": "%",
       "decimals": 2,
       "observed_at": "2026-09-18T19:30:00Z",
