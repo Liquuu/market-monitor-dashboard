@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-01T02:50:36.088853Z",
+  "updated_at": "2026-10-01T17:38:09.295235Z",
   "observations": [
     {
       "captured_at": "2026-08-27T02:15:34.272559Z",
@@ -1424,6 +1424,31 @@
         "nasdaq100_drawdown": {
           "value": -1.05,
           "observed_at": "2026-09-30T19:30:00Z"
+        }
+      }
+    },
+    {
+      "captured_at": "2026-10-01T17:38:09.295235Z",
+      "metrics": {
+        "skew": {
+          "value": 141.92,
+          "observed_at": "2026-09-30T04:00:00Z"
+        },
+        "vix": {
+          "value": 16.52,
+          "observed_at": "2026-10-01T17:00:00Z"
+        },
+        "brent": {
+          "value": 100.82,
+          "observed_at": "2026-10-01T17:00:00Z"
+        },
+        "us10y": {
+          "value": 5.213,
+          "observed_at": "2026-10-01T17:20:00Z"
+        },
+        "nasdaq100_drawdown": {
+          "value": -0.56,
+          "observed_at": "2026-10-01T17:30:00Z"
         }
       }
     }
