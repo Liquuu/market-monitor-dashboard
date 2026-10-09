@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "mode": "live",
-  "generated_at": "2026-10-08T18:05:34.962669Z",
+  "generated_at": "2026-10-09T03:25:32.819016Z",
   "status": {
     "state": "ready",
     "message": "市場データを正常に取得しました。"
@@ -9,47 +9,47 @@
   "metrics": {
     "skew": {
       "label": "Cboe SKEW Index",
-      "value": 141.84,
-      "delta": 0.0,
+      "value": 149.19,
+      "delta": 7.35,
       "unit": "index",
       "decimals": 2,
-      "observed_at": "2026-10-07T04:00:00Z",
+      "observed_at": "2026-10-08T04:00:00Z",
       "source_url": "https://finance.yahoo.com/quote/%5ESKEW/"
     },
     "vix": {
       "label": "Cboe Volatility Index",
-      "value": 16.03,
-      "delta": 0.95,
+      "value": 15.42,
+      "delta": -0.61,
       "unit": "index",
       "decimals": 2,
-      "observed_at": "2026-10-08T17:00:00Z",
+      "observed_at": "2026-10-08T20:00:00Z",
       "source_url": "https://finance.yahoo.com/quote/%5EVIX/"
     },
     "brent": {
       "label": "Brent Crude Oil Futures",
-      "value": 104.2,
-      "delta": 1.84,
+      "value": 103.37,
+      "delta": -0.83,
       "unit": "USD/bbl",
       "decimals": 2,
-      "observed_at": "2026-10-08T17:00:00Z",
+      "observed_at": "2026-10-09T03:00:00Z",
       "source_url": "https://finance.yahoo.com/quote/BZ%3DF/"
     },
     "us10y": {
       "label": "US 10-Year Treasury Yield",
-      "value": 5.235,
-      "delta": -0.042,
+      "value": 5.231,
+      "delta": -0.004,
       "unit": "%",
       "decimals": 3,
-      "observed_at": "2026-10-08T17:20:00Z",
+      "observed_at": "2026-10-08T18:20:00Z",
       "source_url": "https://finance.yahoo.com/quote/%5ETNX/"
     },
     "nasdaq100_drawdown": {
       "label": "NASDAQ 100 Drawdown",
-      "value": -1.86,
-      "delta": -1.64,
+      "value": -1.59,
+      "delta": 0.27,
       "unit": "%",
       "decimals": 2,
-      "observed_at": "2026-10-08T17:30:00Z",
+      "observed_at": "2026-10-08T19:30:00Z",
       "source_url": "https://finance.yahoo.com/quote/%5ENDX/"
     }
   },
