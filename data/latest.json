@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "mode": "live",
-  "generated_at": "2026-10-21T16:13:51.305609Z",
+  "generated_at": "2026-10-22T02:13:19.306077Z",
   "status": {
     "state": "ready",
     "message": "市場データを正常に取得しました。"
@@ -9,47 +9,47 @@
   "metrics": {
     "skew": {
       "label": "Cboe SKEW Index",
-      "value": 160.4,
-      "delta": 0.0,
+      "value": 150.36,
+      "delta": -10.04,
       "unit": "index",
       "decimals": 2,
-      "observed_at": "2026-10-20T04:00:00Z",
+      "observed_at": "2026-10-21T04:00:00Z",
       "source_url": "https://finance.yahoo.com/quote/%5ESKEW/"
     },
     "vix": {
       "label": "Cboe Volatility Index",
-      "value": 16.69,
-      "delta": -0.62,
+      "value": 16.68,
+      "delta": -0.01,
       "unit": "index",
       "decimals": 2,
-      "observed_at": "2026-10-21T15:00:00Z",
+      "observed_at": "2026-10-21T20:00:00Z",
       "source_url": "https://finance.yahoo.com/quote/%5EVIX/"
     },
     "brent": {
       "label": "Brent Crude Oil Futures",
-      "value": 108.43,
-      "delta": -1.91,
+      "value": 110.33,
+      "delta": 1.9,
       "unit": "USD/bbl",
       "decimals": 2,
-      "observed_at": "2026-10-21T16:00:00Z",
+      "observed_at": "2026-10-22T02:00:00Z",
       "source_url": "https://finance.yahoo.com/quote/BZ%3DF/"
     },
     "us10y": {
       "label": "US 10-Year Treasury Yield",
-      "value": 5.109,
-      "delta": -0.008,
+      "value": 5.146,
+      "delta": 0.037,
       "unit": "%",
       "decimals": 3,
-      "observed_at": "2026-10-21T15:20:00Z",
+      "observed_at": "2026-10-21T18:20:00Z",
       "source_url": "https://finance.yahoo.com/quote/%5ETNX/"
     },
     "nasdaq100_drawdown": {
       "label": "NASDAQ 100 Drawdown",
-      "value": -4.45,
-      "delta": 1.13,
+      "value": -4.51,
+      "delta": -0.06,
       "unit": "%",
       "decimals": 2,
-      "observed_at": "2026-10-21T15:30:00Z",
+      "observed_at": "2026-10-21T19:30:00Z",
       "source_url": "https://finance.yahoo.com/quote/%5ENDX/"
     }
   },
