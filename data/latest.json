@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "mode": "live",
-  "generated_at": "2026-10-22T16:12:10.544221Z",
+  "generated_at": "2026-10-23T02:19:32.043468Z",
   "status": {
     "state": "ready",
     "message": "市場データを正常に取得しました。"
@@ -9,47 +9,47 @@
   "metrics": {
     "skew": {
       "label": "Cboe SKEW Index",
-      "value": 150.36,
-      "delta": 0.0,
+      "value": 152.39,
+      "delta": 2.03,
       "unit": "index",
       "decimals": 2,
-      "observed_at": "2026-10-21T04:00:00Z",
+      "observed_at": "2026-10-22T04:00:00Z",
       "source_url": "https://finance.yahoo.com/quote/%5ESKEW/"
     },
     "vix": {
       "label": "Cboe Volatility Index",
-      "value": 18.4,
-      "delta": 1.72,
+      "value": 19.04,
+      "delta": 0.64,
       "unit": "index",
       "decimals": 2,
-      "observed_at": "2026-10-22T15:00:00Z",
+      "observed_at": "2026-10-22T20:00:00Z",
       "source_url": "https://finance.yahoo.com/quote/%5EVIX/"
     },
     "brent": {
       "label": "Brent Crude Oil Futures",
-      "value": 111.68,
-      "delta": 1.35,
+      "value": 114.22,
+      "delta": 2.54,
       "unit": "USD/bbl",
       "decimals": 2,
-      "observed_at": "2026-10-22T16:00:00Z",
+      "observed_at": "2026-10-23T02:00:00Z",
       "source_url": "https://finance.yahoo.com/quote/BZ%3DF/"
     },
     "us10y": {
       "label": "US 10-Year Treasury Yield",
-      "value": 4.996,
-      "delta": -0.15,
+      "value": 4.953,
+      "delta": -0.043,
       "unit": "%",
       "decimals": 3,
-      "observed_at": "2026-10-22T15:20:00Z",
+      "observed_at": "2026-10-22T18:20:00Z",
       "source_url": "https://finance.yahoo.com/quote/%5ETNX/"
     },
     "nasdaq100_drawdown": {
       "label": "NASDAQ 100 Drawdown",
-      "value": -6.57,
-      "delta": -2.06,
+      "value": -7.24,
+      "delta": -0.67,
       "unit": "%",
       "decimals": 2,
-      "observed_at": "2026-10-22T15:30:00Z",
+      "observed_at": "2026-10-22T19:30:00Z",
       "source_url": "https://finance.yahoo.com/quote/%5ENDX/"
     }
   },
