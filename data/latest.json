@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "mode": "live",
-  "generated_at": "2026-11-16T21:22:03.087349Z",
+  "generated_at": "2026-11-17T05:30:43.395330Z",
   "status": {
     "state": "ready",
     "message": "市場データを正常に取得しました。"
@@ -9,17 +9,17 @@
   "metrics": {
     "skew": {
       "label": "Cboe SKEW Index",
-      "value": 147.14,
-      "delta": 0.0,
+      "value": 146.33,
+      "delta": -0.81,
       "unit": "index",
       "decimals": 2,
-      "observed_at": "2026-11-13T05:00:00Z",
+      "observed_at": "2026-11-16T05:00:00Z",
       "source_url": "https://finance.yahoo.com/quote/%5ESKEW/"
     },
     "vix": {
       "label": "Cboe Volatility Index",
-      "value": 23.14,
-      "delta": 3.86,
+      "value": 22.88,
+      "delta": -0.26,
       "unit": "index",
       "decimals": 2,
       "observed_at": "2026-11-16T21:00:00Z",
@@ -27,17 +27,17 @@
     },
     "brent": {
       "label": "Brent Crude Oil Futures",
-      "value": 92.16,
-      "delta": -2.62,
+      "value": 91.7,
+      "delta": -0.46,
       "unit": "USD/bbl",
       "decimals": 2,
-      "observed_at": "2026-11-16T21:00:00Z",
+      "observed_at": "2026-11-17T05:00:00Z",
       "source_url": "https://finance.yahoo.com/quote/BZ%3DF/"
     },
     "us10y": {
       "label": "US 10-Year Treasury Yield",
       "value": 5.121,
-      "delta": -0.033,
+      "delta": 0.0,
       "unit": "%",
       "decimals": 3,
       "observed_at": "2026-11-16T19:20:00Z",
@@ -46,7 +46,7 @@
     "nasdaq100_drawdown": {
       "label": "NASDAQ 100 Drawdown",
       "value": -12.87,
-      "delta": -2.34,
+      "delta": 0.0,
       "unit": "%",
       "decimals": 2,
       "observed_at": "2026-11-16T20:30:00Z",
