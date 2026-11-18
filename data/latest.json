@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "mode": "live",
-  "generated_at": "2026-11-18T04:56:51.326210Z",
+  "generated_at": "2026-11-18T19:41:44.715112Z",
   "status": {
     "state": "ready",
     "message": "市場データを正常に取得しました。"
@@ -10,7 +10,7 @@
     "skew": {
       "label": "Cboe SKEW Index",
       "value": 145.11,
-      "delta": -1.22,
+      "delta": 0.0,
       "unit": "index",
       "decimals": 2,
       "observed_at": "2026-11-17T05:00:00Z",
@@ -18,38 +18,38 @@
     },
     "vix": {
       "label": "Cboe Volatility Index",
-      "value": 25.45,
-      "delta": -0.99,
+      "value": 24.33,
+      "delta": -1.12,
       "unit": "index",
       "decimals": 2,
-      "observed_at": "2026-11-17T21:00:00Z",
+      "observed_at": "2026-11-18T19:00:00Z",
       "source_url": "https://finance.yahoo.com/quote/%5EVIX/"
     },
     "brent": {
       "label": "Brent Crude Oil Futures",
-      "value": 92.62,
-      "delta": 0.03,
+      "value": 89.09,
+      "delta": -3.53,
       "unit": "USD/bbl",
       "decimals": 2,
-      "observed_at": "2026-11-18T04:00:00Z",
+      "observed_at": "2026-11-18T19:00:00Z",
       "source_url": "https://finance.yahoo.com/quote/BZ%3DF/"
     },
     "us10y": {
       "label": "US 10-Year Treasury Yield",
-      "value": 5.103,
-      "delta": 0.002,
+      "value": 5.064,
+      "delta": -0.039,
       "unit": "%",
       "decimals": 3,
-      "observed_at": "2026-11-17T19:20:00Z",
+      "observed_at": "2026-11-18T19:20:00Z",
       "source_url": "https://finance.yahoo.com/quote/%5ETNX/"
     },
     "nasdaq100_drawdown": {
       "label": "NASDAQ 100 Drawdown",
-      "value": -13.54,
-      "delta": 0.61,
+      "value": -13.35,
+      "delta": 0.19,
       "unit": "%",
       "decimals": 2,
-      "observed_at": "2026-11-17T20:30:00Z",
+      "observed_at": "2026-11-18T19:30:00Z",
       "source_url": "https://finance.yahoo.com/quote/%5ENDX/"
     }
   },
