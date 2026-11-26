@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "mode": "live",
-  "generated_at": "2026-11-26T05:45:13.766167Z",
+  "generated_at": "2026-11-26T20:39:11.684491Z",
   "status": {
     "state": "ready",
     "message": "市場データを正常に取得しました。"
@@ -10,7 +10,7 @@
     "skew": {
       "label": "Cboe SKEW Index",
       "value": 142.06,
-      "delta": 2.9,
+      "delta": 0.0,
       "unit": "index",
       "decimals": 2,
       "observed_at": "2026-11-25T05:00:00Z",
@@ -18,17 +18,17 @@
     },
     "vix": {
       "label": "Cboe Volatility Index",
-      "value": 28.32,
-      "delta": -0.31,
+      "value": 26.8,
+      "delta": -1.52,
       "unit": "index",
       "decimals": 2,
-      "observed_at": "2026-11-25T21:00:00Z",
+      "observed_at": "2026-11-26T16:00:00Z",
       "source_url": "https://finance.yahoo.com/quote/%5EVIX/"
     },
     "brent": {
       "label": "Brent Crude Oil Futures",
       "value": 91.17,
-      "delta": 0.56,
+      "delta": 0.0,
       "unit": "USD/bbl",
       "decimals": 2,
       "observed_at": "2026-11-26T04:00:00Z",
@@ -46,7 +46,7 @@
     "nasdaq100_drawdown": {
       "label": "NASDAQ 100 Drawdown",
       "value": -16.57,
-      "delta": 0.24,
+      "delta": 0.0,
       "unit": "%",
       "decimals": 2,
       "observed_at": "2026-11-25T20:30:00Z",
